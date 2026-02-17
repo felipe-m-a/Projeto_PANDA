@@ -11,7 +11,7 @@
         }
 
         public static readonly GameScene Initialization = new("Initialization", SceneType.None);
-        public static readonly GameScene MainMenu = new("MainMenu", SceneType.Menu);
+        public static readonly GameScene Menu = new("Menu", SceneType.Menu);
 
         public static readonly GameScene MinigameMemory = new("Minigame/Memory", SceneType.Minigame);
         public static readonly GameScene MinigameFlow = new("Minigame/Flow", SceneType.Minigame);

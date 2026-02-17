@@ -12,7 +12,7 @@ namespace Project.Scripts
                 return;
 
             SceneTransitionPlan.Create()
-                .Load(GameScene.MainMenu, true)
+                .Load(GameScene.Menu, true)
                 .Perform();
         }
     }
