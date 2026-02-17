@@ -1,0 +1,23 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Project/UI/Menu/Menu.uss?fileID=7433441132597879392&amp;guid=c34de45c95692624cbd4bae4c5da5bf3&amp;type=3#Menu"/>
+    <ui:VisualElement class="fixed-1920x1080">
+        <ui:VisualElement class="header">
+            <ui:Button icon-image="project://database/Assets/Project/Art/Menu/icon_arrow_back.png?fileID=2800000&amp;guid=318104d75ee50054ca8e2df48068ed86&amp;type=3#icon_arrow_back" name="BackButton"/>
+            <ui:Label text="Minigames"/>
+        </ui:VisualElement>
+        <ui:VisualElement class="page-body">
+            <ui:VisualElement class="minigames-row">
+                <ui:Button text="Memória" name="MemoryButton"/>
+                <ui:Button text="Quebra-cabeça" name="PuzzleButton" style="margin-left: 16px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="minigames-row" style="margin-top: 16px;">
+                <ui:Button text="Flow" name="FlowButton"/>
+                <ui:Button text="Canos" name="PipesButton" style="margin-left: 16px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="minigames-row" style="margin-top: 16px;">
+                <ui:Button text="Nave" name="SpaceshipButton"/>
+                <ui:Button text="Infestação" name="WhackButton" style="margin-left: 16px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

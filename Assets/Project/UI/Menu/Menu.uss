@@ -1,0 +1,47 @@
+.title {
+    font-size: 250px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+}
+
+.header > Label {
+    margin-left: 32px;
+}
+
+.page-body {
+    flex-shrink: 0;
+    position: absolute;
+    left: 96px;
+    right: 96px;
+    bottom: 54px;
+    top: 216px;
+}
+
+.minigames-row {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.minigames-row > Button {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.unity-base-field > .unity-label {
+    margin-right: 32px;
+}
+
+.unity-base-popup-field__arrow {
+    height: 32px;
+    width: 32px;
+    background-image: url("project://database/Assets/Project/Art/Menu/icon_arrow_down.png?fileID=2800000&guid=4de3d86c8f3261b4f9a14fb685efae77&type=3#icon_arrow_down");
+}
+
+.unity-toggle__checkmark {
+    height: 64px;
+    width: 64px;
+}
+
+.unity-toggle__input:checked > .unity-toggle__checkmark {
+    background-image: url("project://database/Assets/Project/Art/Menu/icon_checkmark.png?fileID=2800000&guid=8feadfe0483d426448763d99769b23de&type=3#icon_checkmark");
+}
