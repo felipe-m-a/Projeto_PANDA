@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 414375032}
   - component: {fileID: 414375031}
   m_Layer: 0
-  m_Name: EditorInitializationLoader
+  m_Name: Editor Initialization Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Menu.Controller
   document: {fileID: 2048414965}
+  settings: {fileID: 11400000, guid: e346effbbd5ae994394b2d5501e322a8, type: 2}
 --- !u!1 &2048414964
 GameObject:
   m_ObjectHideFlags: 0

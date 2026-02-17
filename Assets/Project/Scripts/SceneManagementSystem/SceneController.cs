@@ -10,6 +10,11 @@ namespace Project.Scripts.SceneManagementSystem
         private readonly Dictionary<GameScene.SceneType, string> _loadedScenes = new();
         private bool _isBusy;
 
+        public bool HasLoaded(GameScene.SceneType sceneType)
+        {
+            return _loadedScenes.ContainsKey(sceneType);
+        }
+
         public Coroutine ExecutePlan(SceneTransitionPlan plan)
         {
             if (_isBusy)
