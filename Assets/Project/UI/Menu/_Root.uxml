@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MinigamesPage" src="project://database/Assets/Project/UI/Menu/MinigamesPage.uxml?fileID=9197481963319205126&amp;guid=338bd31a88a40364e91c052b275be335&amp;type=3#MinigamesPage"/>
+    <ui:Template name="TitlePage" src="project://database/Assets/Project/UI/Menu/TitlePage.uxml?fileID=9197481963319205126&amp;guid=d30a7e9d65839a84a92452a16b814654&amp;type=3#TitlePage"/>
+    <Style src="project://database/Assets/Project/UI/Base.uss?fileID=7433441132597879392&amp;guid=63132c5981a002e4498a783bc4725708&amp;type=3#Base"/>
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:Instance template="TitlePage" style="display: flex; flex-grow: 1;"/>
+        <ui:Instance template="MinigamesPage" style="flex-grow: 1; display: none;"/>
+    </ui:VisualElement>
+</ui:UXML>

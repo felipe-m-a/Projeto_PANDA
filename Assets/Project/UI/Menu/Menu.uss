@@ -1,0 +1,27 @@
+.title {
+    font-size: 250px;
+    -unity-font-style: bold;
+}
+
+.header > Label {
+    margin-left: 32px;
+}
+
+.page-body {
+    flex-shrink: 0;
+    position: absolute;
+    left: 96px;
+    right: 96px;
+    bottom: 54px;
+    top: 216px;
+}
+
+.minigames-row {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.minigames-row > Button {
+    flex-grow: 1;
+    flex-basis: 0;
+}

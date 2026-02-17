@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Project/UI/Base.uss?fileID=7433441132597879392&amp;guid=63132c5981a002e4498a783bc4725708&amp;type=3#Base"/>
+    <Style src="project://database/Assets/Project/UI/Menu/Menu.uss?fileID=7433441132597879392&amp;guid=c34de45c95692624cbd4bae4c5da5bf3&amp;type=3#Menu"/>
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:Label text="PANDA" class="title"/>
+        <ui:VisualElement style="width: 720px;">
+            <ui:Button text="Aventura" name="AdventureButton"/>
+            <ui:Button text="Minigames" name="MinigamesButton" style="margin-top: 12px;"/>
+            <ui:Button text="Configurações" name="SettingsButton" style="margin-top: 12px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
