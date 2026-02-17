@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 414375032}
   - component: {fileID: 414375031}
   m_Layer: 0
-  m_Name: EditorInitializationLoader
+  m_Name: Editor Initialization Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,14 +1,25 @@
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+namespace Project.Scripts.Minigame.Flow
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    public class Manager : MonoBehaviour
     {
-    }
+        [SerializeField] private UIController uiController;
+        [SerializeField] private Minigame minigame;
 
-    // Update is called once per frame
-    private void Update()
-    {
+        private void OnEnable()
+        {
+            minigame.SolvedEvent += OnMinigameSolvedEvent;
+        }
+
+        private void OnDisable()
+        {
+            minigame.SolvedEvent -= OnMinigameSolvedEvent;
+        }
+
+        private void OnMinigameSolvedEvent()
+        {
+            uiController.ShowCongratulationsMenu();
+        }
     }
 }

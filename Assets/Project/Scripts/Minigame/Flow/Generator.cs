@@ -24,7 +24,6 @@ namespace Project.Scripts.Minigame.Flow
             return ends;
         }
 
-
         private static void SetInitialConfiguration(FlatGrid<int> grid, List<List<int>> chains)
         {
             // Horizontais

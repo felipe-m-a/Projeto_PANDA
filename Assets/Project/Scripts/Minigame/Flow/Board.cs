@@ -7,9 +7,11 @@ namespace Project.Scripts.Minigame.Flow
 {
     [RequireComponent(typeof(AspectRatioFitter))]
     [RequireComponent(typeof(GridLayoutGroup))]
-    public class Board : MonoBehaviour, IPointerUpHandler, IPointerExitHandler
+    [RequireComponent(typeof(CanvasGroup))]
+    public class Board : MonoBehaviour, IPointerExitHandler
     {
         private AspectRatioFitter _aspectRatioFitter;
+        private CanvasGroup _canvasGroup;
         private GridLayoutGroup _gridLayoutGroup;
         private RectTransform _rectTransform;
 
@@ -17,6 +19,7 @@ namespace Project.Scripts.Minigame.Flow
         {
             _aspectRatioFitter = GetComponent<AspectRatioFitter>();
             _gridLayoutGroup = GetComponent<GridLayoutGroup>();
+            _canvasGroup = GetComponent<CanvasGroup>();
             _rectTransform = GetComponent<RectTransform>();
         }
 
@@ -25,14 +28,7 @@ namespace Project.Scripts.Minigame.Flow
             PointerExitEvent?.Invoke();
         }
 
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            PointerUpEvent?.Invoke();
-        }
-
         public event Action PointerExitEvent;
-        public event Action PointerUpEvent;
 
         public void SetDimensions(int rows, int columns)
         {
@@ -44,6 +40,12 @@ namespace Project.Scripts.Minigame.Flow
 
             var size = _rectTransform.rect.height / rows;
             _gridLayoutGroup.cellSize = new Vector2(size, size);
+        }
+
+        public void SetNonInteractable()
+        {
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
     }
 }

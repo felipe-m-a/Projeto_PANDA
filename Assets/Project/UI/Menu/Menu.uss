@@ -1,3 +1,7 @@
+:root{
+    background-color: var(--body-bg);
+}
+
 .title {
     font-size: 250px;
     -unity-font-style: bold;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.Minigame.Flow
 {
-    public class Tile : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
+    public class Tile : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler
     {
         [SerializeField] private Image end;
         [SerializeField] private Image linkUp;
@@ -26,8 +26,14 @@ namespace Project.Scripts.Minigame.Flow
             PointerEnterEvent?.Invoke(this);
         }
 
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            PointerUpEvent?.Invoke();
+        }
+
         public event Action<Tile> PointerDownEvent;
         public event Action<Tile> PointerEnterEvent;
+        public event Action PointerUpEvent;
 
         public void InitializeEnd(int index, Color color)
         {

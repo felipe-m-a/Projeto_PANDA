@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,14 +16,12 @@ namespace Project.Scripts.Minigame.Flow
         private Dictionary<int, Color> _ends = new();
         private FlatGrid<Tile> _grid;
 
-
         private void Start()
         {
             var rows = settings.CurrentDifficultySettings.minigameFlowRows;
             var columns = settings.CurrentDifficultySettings.minigameFlowColumns;
 
             board.SetDimensions(rows, columns);
-            board.PointerUpEvent += OnCancelLinking;
             board.PointerExitEvent += OnCancelLinking;
 
             var ends = Generator.Generate(rows, columns);
@@ -35,15 +34,17 @@ namespace Project.Scripts.Minigame.Flow
 
         private void OnDisable()
         {
-            board.PointerUpEvent -= OnCancelLinking;
             board.PointerExitEvent -= OnCancelLinking;
 
             foreach (var tile in _grid)
             {
                 tile.PointerDownEvent -= OnStartLinking;
                 tile.PointerEnterEvent -= OnLinking;
+                tile.PointerUpEvent -= OnCancelLinking;
             }
         }
+
+        public event Action SolvedEvent;
 
         private void SpawnTiles(int rows, int columns)
         {
@@ -55,13 +56,14 @@ namespace Project.Scripts.Minigame.Flow
                 {
                     tile.InitializeEnd(i, color);
                     tile.PointerDownEvent += OnStartLinking;
-                    tile.PointerEnterEvent += OnLinking;
                 }
                 else
                 {
                     tile.InitializeNormal(i);
-                    tile.PointerEnterEvent += OnLinking;
                 }
+
+                tile.PointerEnterEvent += OnLinking;
+                tile.PointerUpEvent += OnCancelLinking;
 
                 _grid[i] = tile;
             }
@@ -91,7 +93,7 @@ namespace Project.Scripts.Minigame.Flow
                 return;
             }
 
-            // Se uma ponta
+            // Se for uma ponta
             if (_ends.TryGetValue(tile.Index, out var endColor))
             {
                 // Se for a outra ponta dessa cor
@@ -112,6 +114,13 @@ namespace Project.Scripts.Minigame.Flow
 
         private void OnCancelLinking()
         {
+            // Verifica se o minigame foi concluido
+            if (_grid.All(t => t.LinkColor.HasValue))
+            {
+                board.SetNonInteractable();
+                SolvedEvent?.Invoke();
+            }
+
             // Tem que estar marcando
             if (!_currentColor.HasValue)
                 return;
