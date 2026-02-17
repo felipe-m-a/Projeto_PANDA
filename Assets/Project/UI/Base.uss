@@ -9,7 +9,7 @@
     font-size: 64px;
 }
 
-Button {
+.unity-button {
     margin: 0;
     padding: 8px;
     background-color: var(--btn-bg);
