@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Project/UI/Base.uss?fileID=7433441132597879392&amp;guid=63132c5981a002e4498a783bc4725708&amp;type=3#Base"/>
     <Style src="project://database/Assets/Project/UI/Minigame/Minigame.uss?fileID=7433441132597879392&amp;guid=660c577d0996420419a13fdb37f5cf31&amp;type=3#Minigame"/>
     <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
         <ui:VisualElement picking-mode="Ignore" class="fixed-1920x1080">

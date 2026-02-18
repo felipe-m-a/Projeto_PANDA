@@ -18,5 +18,5 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Minigame/Memory.unity
     guid: 08e3518e9a661dc44838f706248a4484
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

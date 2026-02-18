@@ -2,6 +2,7 @@
     <ui:Template name="MinigamesPage" src="project://database/Assets/Project/UI/Menu/MinigamesPage.uxml?fileID=9197481963319205126&amp;guid=338bd31a88a40364e91c052b275be335&amp;type=3#MinigamesPage"/>
     <ui:Template name="SettingsPage" src="project://database/Assets/Project/UI/Menu/SettingsPage.uxml?fileID=9197481963319205126&amp;guid=b85269f0915a4e35a24d75608575aa2b&amp;type=3#SettingsPage"/>
     <ui:Template name="TitlePage" src="project://database/Assets/Project/UI/Menu/TitlePage.uxml?fileID=9197481963319205126&amp;guid=d30a7e9d65839a84a92452a16b814654&amp;type=3#TitlePage"/>
+    <Style src="project://database/Assets/Project/UI/Base.uss?fileID=7433441132597879392&amp;guid=63132c5981a002e4498a783bc4725708&amp;type=3#Base"/>
     <Style src="project://database/Assets/Project/UI/Menu/Menu.uss?fileID=7433441132597879392&amp;guid=c34de45c95692624cbd4bae4c5da5bf3&amp;type=3#Menu"/>
     <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
         <ui:Instance template="TitlePage" name="TitlePage" style="display: flex; flex-grow: 1;"/>

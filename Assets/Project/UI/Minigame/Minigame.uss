@@ -15,13 +15,13 @@
 }
 
 .pause-menu > Label {
-    color: #FFFFFF;
+    color: rgb(255, 255, 255);
     font-size: 150px;
     -unity-font-style: bold;
     -unity-text-align: upper-center;
 }
 
-.pause-menu  Button {
+.pause-menu Button {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
@@ -39,9 +39,11 @@
     justify-content: center;
 }
 
-.congratulations-menu  > Label {
-    color: #FFFFFF;
+.congratulations-menu > Label {
+    color: rgb(255, 255, 255);
     font-size: 150px;
     -unity-font-style: bold;
     -unity-text-align: upper-center;
 }
+
+
