@@ -45,7 +45,7 @@ namespace Project.Scripts.Adventure.Level1
 
                 storyTracker.receivedQuest = true;
             }
-            else if (storyTracker.collectedCoinsCount < 3)
+            else if (storyTracker.CollectedCoinsCount < 3)
             {
                 dialogue.AddLine("Ainda faltam moedas. Volte quando tiver todas!", "Oobi");
                 dialogueManager.StartDialogue(dialogue);

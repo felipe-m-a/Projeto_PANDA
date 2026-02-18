@@ -9,7 +9,7 @@ namespace Project.Scripts.Adventure
     {
         [SerializeField] private UIDocument document;
         [SerializeField] private Canvas onScreenControls;
-        
+
         private Label _coinsLabel;
         private Label _dialogueLabel;
 
@@ -75,6 +75,7 @@ namespace Project.Scripts.Adventure
 
         private void OnPauseButtonClicked(ClickEvent evt)
         {
+            HideOnscreenControls();
             Time.timeScale = 0;
             _hudPanel.style.display = DisplayStyle.None;
             _pauseMenu.style.display = DisplayStyle.Flex;
@@ -97,6 +98,7 @@ namespace Project.Scripts.Adventure
 
         private void OnResumeButtonClicked(ClickEvent evt)
         {
+            ShowOnscreenControls();
             Time.timeScale = 1;
             _pauseMenu.style.display = DisplayStyle.None;
             _hudPanel.style.display = DisplayStyle.Flex;

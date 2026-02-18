@@ -14,7 +14,7 @@ namespace Project.Scripts.Adventure.Level1
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<Player>() is null) return;
-            storyTracker.collectedCoinsCount++;
+            storyTracker.AddCoin();
             gameObject.SetActive(false);
         }
     }
