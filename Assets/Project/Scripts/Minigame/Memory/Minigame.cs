@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -20,13 +21,18 @@ namespace Project.Scripts.Minigame.Memory
         {
             var rows = settings.CurrentDifficultySettings.minigameMemoryRows;
             var columns = settings.CurrentDifficultySettings.minigameMemoryColumns;
-
-            board.SetDimensions(rows, columns);
-            _cards = new FlatGrid<Card>(rows, columns);
+            var colorSpritePairs = settings.colors
+                .SelectMany(c => settings.minigameMemorySymbols.Select(s => (c, s)))
+                .OrderBy(_ => Random.value)
+                .ToList();
 
             var symbolIdGrid = Generator.Generate(rows, columns);
 
-            SpawnCards(symbolIdGrid);
+            _cards = new FlatGrid<Card>(rows, columns);
+
+            board.SetDimensions(rows, columns);
+
+            SpawnCards(symbolIdGrid, colorSpritePairs);
         }
 
         private void OnDisable()
@@ -36,17 +42,15 @@ namespace Project.Scripts.Minigame.Memory
 
         public event Action SolvedEvent;
 
-        private void SpawnCards(FlatGrid<int> symbolIdGrid)
+        private void SpawnCards(FlatGrid<int> symbolIdGrid, List<(Color, Sprite)> colorSpritePairs)
         {
-            var selectedSymbols = symbols.OrderBy(_ => Random.value).Take(symbolIdGrid.Count / 2).ToList();
-
             for (var i = 0; i < symbolIdGrid.Count; i++)
             {
                 var card = Instantiate(cardPrefab, board.transform);
 
-                var symbol = selectedSymbols[symbolIdGrid[i]];
+                var (color, symbol) = colorSpritePairs[symbolIdGrid[i]];
 
-                card.Initialize(symbol);
+                card.Initialize(color, symbol);
 
                 card.PointerClickEvent += OnCardClick;
 
