@@ -48,9 +48,15 @@ MonoBehaviour:
   easyDifficultySettings:
     minigameFlowRows: 5
     minigameFlowColumns: 5
+    minigameMemoryRows: 3
+    minigameMemoryColumns: 4
   mediumDifficultySettings:
     minigameFlowRows: 5
     minigameFlowColumns: 10
+    minigameMemoryRows: 4
+    minigameMemoryColumns: 6
   hardDifficultySettings:
     minigameFlowRows: 8
     minigameFlowColumns: 16
+    minigameMemoryRows: 5
+    minigameMemoryColumns: 10

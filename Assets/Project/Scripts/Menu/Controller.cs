@@ -122,10 +122,10 @@ namespace Project.Scripts.Menu
 
         private void OnMinigamesPageMemoryButtonClicked(ClickEvent evt)
         {
-            // SceneTransitionPlan.Create()
-            //     .Unload(GameScene.SceneType.Menu)
-            //     .Load(GameScene.MinigameMemory, true)
-            //     .Perform();
+            SceneTransitionPlan.Create()
+                .Unload(GameScene.SceneType.Menu)
+                .Load(GameScene.MinigameMemory, true)
+                .Perform();
         }
 
         private void OnMinigamesPageFlowButtonClicked(ClickEvent evt)
