@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Project/UI/Base.uss?fileID=7433441132597879392&amp;guid=63132c5981a002e4498a783bc4725708&amp;type=3#Base"/>
+    <Style src="project://database/Assets/Project/UI/Adventure/Adventure.uss?fileID=7433441132597879392&amp;guid=d909d95ce593b9546919b80c716ffa28&amp;type=3#Adventure"/>
+    <ui:VisualElement class="fixed-1920x1080">
+        <ui:VisualElement class="dialogue">
+            <ui:Label name="DialogueLabel" style="flex-grow: 1; white-space: pre-wrap;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

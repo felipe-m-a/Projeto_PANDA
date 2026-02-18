@@ -92,10 +92,10 @@ namespace Project.Scripts.Menu
 
         private void OnTitlePageAdventureButtonClicked(ClickEvent evt)
         {
-            // SceneTransitionPlan.Create()
-            //     .Unload(GameScene.SceneType.Menu)
-            //     .Load(GameScene.MinigameMemory, true)
-            //     .Perform();
+            SceneTransitionPlan.Create()
+                .Unload(GameScene.SceneType.Menu)
+                .Load(GameScene.AdventureLevel1, true)
+                .Perform();
         }
 
         private void OnTitlePageMinigamesButtonClicked(ClickEvent evt)

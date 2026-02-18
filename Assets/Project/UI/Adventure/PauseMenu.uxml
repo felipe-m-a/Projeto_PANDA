@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Project/UI/Base.uss?fileID=7433441132597879392&amp;guid=63132c5981a002e4498a783bc4725708&amp;type=3#Base"/>
+    <Style src="project://database/Assets/Project/UI/Adventure/Adventure.uss?fileID=7433441132597879392&amp;guid=d909d95ce593b9546919b80c716ffa28&amp;type=3#Adventure"/>
+    <ui:VisualElement name="VisualElement" class="pause-menu" style="position: relative;">
+        <ui:Label text="Pausado"/>
+        <ui:VisualElement style="width: 720px; flex-direction: row; justify-content: center; align-items: stretch;">
+            <ui:Button text="Sair" name="QuitButton" style="background-color: rgb(220, 53, 69);"/>
+            <ui:Button text="Continuar" name="ResumeButton" style="margin-left: 16px; background-color: rgb(25, 135, 84);"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

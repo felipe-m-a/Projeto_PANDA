@@ -64,8 +64,10 @@ namespace Project.Scripts.Minigame
 
         private void OnPauseMenuQuitButtonClicked(ClickEvent evt)
         {
+            Time.timeScale = 1;
             SceneTransitionPlan.Create()
                 .Unload(GameScene.SceneType.Minigame)
+                .Unload(GameScene.SceneType.Adventure)
                 .Load(GameScene.Menu, true)
                 .Perform();
         }
