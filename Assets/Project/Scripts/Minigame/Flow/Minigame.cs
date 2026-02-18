@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Minigame.Flow
 {
@@ -20,13 +21,14 @@ namespace Project.Scripts.Minigame.Flow
         {
             var rows = settings.CurrentDifficultySettings.minigameFlowRows;
             var columns = settings.CurrentDifficultySettings.minigameFlowColumns;
+            var colors = settings.colors.OrderBy(_ => Random.value).ToList();
+
+            var ends = Generator.Generate(rows, columns);
+            _ends = ends.ToDictionary(pair => pair.Key, pair => colors[pair.Value]);
+            _grid = new FlatGrid<Tile>(rows, columns);
 
             board.SetDimensions(rows, columns);
             board.PointerExitEvent += OnCancelLinking;
-
-            var ends = Generator.Generate(rows, columns);
-            _ends = ends.ToDictionary(pair => pair.Key, pair => settings.minigameFlowColors[pair.Value]);
-            _grid = new FlatGrid<Tile>(rows, columns);
 
             SpawnTiles(rows, columns);
         }

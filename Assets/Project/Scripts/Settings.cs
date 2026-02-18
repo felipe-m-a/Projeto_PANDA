@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Scripts
@@ -9,11 +8,10 @@ namespace Project.Scripts
     {
         public int difficultyIndex;
         public bool showOnScreenControls;
-        public List<Color> minigameFlowColors;
+        public Color[] colors;
+        public Sprite[] minigameMemorySymbols;
 
-        [Header("Difficulty Settings")] [SerializeField]
-        private DifficultySettings easyDifficultySettings;
-
+        [SerializeField] private DifficultySettings easyDifficultySettings;
         [SerializeField] private DifficultySettings mediumDifficultySettings;
         [SerializeField] private DifficultySettings hardDifficultySettings;
 
@@ -27,10 +25,14 @@ namespace Project.Scripts
 
         private void OnValidate()
         {
-            foreach (var dSettings in new[] { easyDifficultySettings, mediumDifficultySettings, hardDifficultySettings })
+            foreach (var d in new[] { easyDifficultySettings, mediumDifficultySettings, hardDifficultySettings })
             {
-                Debug.Assert(dSettings.minigameFlowColumns >= dSettings.minigameFlowRows, "O minigame flow não pode ter menos linhas que colunas");
-                Debug.Assert(dSettings.minigameFlowColumns <= minigameFlowColors.Count, "O minigame flow não cores suficientes");
+                Debug.Assert(d.minigameFlowColumns >= d.minigameFlowRows, "Minigame Flow: Não pode ter menos linhas que colunas");
+                Debug.Assert(d.minigameFlowColumns <= colors.Length, "Minigame Flow: Faltam cores");
+
+                Debug.Assert(d.minigameMemoryRows * d.minigameMemoryColumns % 2 == 0, "Minigame Memory: A quantidade de cartas tem que ser par");
+                Debug.Assert(d.minigameMemoryRows * d.minigameMemoryColumns / 2 <= colors.Length * minigameMemorySymbols.Length,
+                    "Minigame Memory: Quantidade de cartas acima do limite");
             }
         }
 
@@ -39,6 +41,9 @@ namespace Project.Scripts
         {
             [Header("Minigame Flow")] [Min(5)] public int minigameFlowRows;
             [Min(5)] public int minigameFlowColumns;
+
+            [Header("Minigame Memory")] [Min(3)] public int minigameMemoryRows;
+            [Min(4)] public int minigameMemoryColumns;
         }
     }
 }
