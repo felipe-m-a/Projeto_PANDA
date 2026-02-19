@@ -117,7 +117,7 @@ namespace Project.Scripts.Minigame.Flow
         private void OnCancelLinking()
         {
             // Verifica se o minigame foi concluido
-            if (_grid.All(t => t.LinkColor.HasValue))
+            if (_ends.Keys.All(e => _grid[e].LinkColor.HasValue))
             {
                 board.SetNonInteractable();
                 SolvedEvent?.Invoke();
