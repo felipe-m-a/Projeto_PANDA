@@ -77,7 +77,9 @@ namespace Project.Scripts.Minigame
             var plan = SceneTransitionPlan.Create()
                 .Unload(GameScene.SceneType.Minigame);
 
-            if (!SceneController.Instance.HasLoaded(GameScene.SceneType.Adventure))
+            if (SceneController.Instance.HasLoaded(GameScene.SceneType.Adventure))
+                plan.Activate(GameScene.SceneType.Adventure);
+            else
                 plan.Load(GameScene.Menu, true);
 
             plan.Perform();

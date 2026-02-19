@@ -26,10 +26,21 @@ namespace Project.Scripts.Adventure.Level1
         public void Interact()
         {
             var dialogue = new Dialogue(transform);
+
             if (!storyTracker.receivedParts)
+            {
                 dialogue.Add("Sua nave está quebrada! Você precisa de peças para consertá-la.");
+            }
+            else if (!storyTracker.fixedSpaceship)
+            {
+                dialogue.Add("Peças necessárias encontradas.\nIniciando conserto da nave.");
+                storyTracker.deliveredParts = true;
+            }
             else
-                dialogue.Add("Peças necessárias encontrados.\nIniciando conserto da nave.");
+            {
+                dialogue.Add("Nave consertada. Preparando para decolagem.");
+            }
+
             EventBus.TriggerDialogue(dialogue);
         }
     }

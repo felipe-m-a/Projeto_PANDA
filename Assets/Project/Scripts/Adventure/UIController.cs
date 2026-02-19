@@ -67,11 +67,12 @@ namespace Project.Scripts.Adventure
 
             ShowOnscreenControls();
         }
-        
+
         public void HideAll()
         {
             HideOnscreenControls();
-            document.enabled = false;
+            _hudPanel.style.display = DisplayStyle.None;
+            _dialoguePanel.style.display = DisplayStyle.None;
         }
 
         private void ShowOnscreenControls()

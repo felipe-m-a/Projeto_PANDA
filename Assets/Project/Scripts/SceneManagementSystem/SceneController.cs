@@ -37,12 +37,15 @@ namespace Project.Scripts.SceneManagementSystem
             {
                 _loadedScenes.Add(type, path);
                 yield return SceneManager.LoadSceneAsync(path, LoadSceneMode.Additive);
-
-                if (path != plan.SceneToActivate) continue;
-                var scene = SceneManager.GetSceneByPath(path);
-                if (scene.IsValid() && scene.isLoaded)
-                    SceneManager.SetActiveScene(scene);
             }
+
+            if (_loadedScenes.TryGetValue(plan.SceneTypeToActivate, out var gameSceneToActivate))
+            {
+                var sceneToActivate = SceneManager.GetSceneByPath(gameSceneToActivate);
+                if (sceneToActivate.IsValid() && sceneToActivate.isLoaded)
+                    SceneManager.SetActiveScene(sceneToActivate);
+            }
+
 
             _isBusy = false;
         }

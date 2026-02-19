@@ -11,7 +11,7 @@ namespace Project.Scripts.SceneManagementSystem
 
         public Dictionary<GameScene.SceneType, string> ScenesToLoad { get; } = new();
         public HashSet<GameScene.SceneType> SceneTypesToUnload { get; } = new();
-        public string SceneToActivate { get; private set; }
+        public GameScene.SceneType SceneTypeToActivate { get; private set; }
 
         public static SceneTransitionPlan Create()
         {
@@ -29,7 +29,7 @@ namespace Project.Scripts.SceneManagementSystem
                 SceneTypesToUnload.Add(scene.Type);
                 ScenesToLoad[scene.Type] = scene.Path;
                 if (setActive)
-                    SceneToActivate = scene.Path;
+                    SceneTypeToActivate = scene.Type;
             }
 
             return this;
@@ -42,6 +42,12 @@ namespace Project.Scripts.SceneManagementSystem
             else
                 SceneTypesToUnload.Add(type);
 
+            return this;
+        }
+
+        public SceneTransitionPlan Activate(GameScene.SceneType type)
+        {
+            SceneTypeToActivate = type;
             return this;
         }
 

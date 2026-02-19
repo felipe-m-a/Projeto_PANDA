@@ -9,18 +9,28 @@ namespace Project.Scripts.Adventure.Level1
         [SerializeField] private UIController uiController;
 
         public bool receivedQuest;
+        public bool collectedCoins;
         public bool deliveredCoins;
         public bool receivedParts;
-        public bool completedFirstMinigame;
         public bool deliveredParts;
-        public bool completedSecondMinigame;
+        public bool fixedSpaceship;
 
         public int CollectedCoinsCount { get; private set; }
+
+        private void OnEnable()
+        {
+            EventBus.DialogueEnded += OnDialogueEnded;
+        }
+
+        public event Action CompletedEvent;
 
         public void AddCoin()
         {
             CollectedCoinsCount++;
             uiController.UpdateCoins(CollectedCoinsCount.ToString());
+
+            if (CollectedCoinsCount >= 3)
+                collectedCoins = true;
         }
 
         public void SubtractCoins(int amount)
@@ -29,23 +39,21 @@ namespace Project.Scripts.Adventure.Level1
             uiController.UpdateCoins(CollectedCoinsCount.ToString());
         }
 
-        private void OnEnable()
-        {
-            EventBus.DialogueEnded += OnDialogueEnded;
-        }
-
         private void OnDialogueEnded()
         {
-            if (deliveredCoins && !completedFirstMinigame)
+            if (deliveredCoins && !receivedParts)
             {
                 EventBus.TriggerMinigame(GameScene.MinigameMemory);
-                completedFirstMinigame = true;
+                receivedParts = true;
             }
-
-            if (deliveredParts && !completedSecondMinigame)
+            else if (deliveredParts && !fixedSpaceship)
             {
                 EventBus.TriggerMinigame(GameScene.MinigameFlow);
-                completedSecondMinigame = true;
+                fixedSpaceship = true;
+            }
+            else if (fixedSpaceship)
+            {
+                CompletedEvent?.Invoke();
             }
         }
     }

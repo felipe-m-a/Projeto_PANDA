@@ -5,10 +5,9 @@ namespace Project.Scripts.Adventure.Level1
 {
     public class Npc : MonoBehaviour, IInteractable
     {
+        private const string NpcName = "Oobi";
         [SerializeField] private Renderer interactableFocusIcon;
         [SerializeField] private StoryTracker storyTracker;
-
-        private const string NpcName = "Oobi";
 
         public bool CanInteract()
         {
@@ -41,7 +40,7 @@ namespace Project.Scripts.Adventure.Level1
                     .Add(NpcName, "Estou contando com você! Boa sorte!");
                 storyTracker.receivedQuest = true;
             }
-            else if (storyTracker.CollectedCoinsCount < 3 && !storyTracker.deliveredCoins)
+            else if (!storyTracker.collectedCoins)
             {
                 dialogue.Add(NpcName, "Ainda faltam moedas. Volte quando tiver todas!");
             }
