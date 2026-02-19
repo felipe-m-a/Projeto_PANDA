@@ -60,21 +60,27 @@ namespace Project.Scripts.Adventure
             _dialoguePanel.style.display = DisplayStyle.Flex;
         }
 
-        public void HideDialogue()
+        public void ShowHud()
         {
             _dialoguePanel.style.display = DisplayStyle.None;
             _hudPanel.style.display = DisplayStyle.Flex;
 
             ShowOnscreenControls();
         }
+        
+        public void HideAll()
+        {
+            HideOnscreenControls();
+            document.enabled = false;
+        }
 
-        public void ShowOnscreenControls()
+        private void ShowOnscreenControls()
         {
             if (settings.showOnScreenControls)
                 onScreenControls.enabled = true;
         }
 
-        public void HideOnscreenControls()
+        private void HideOnscreenControls()
         {
             onScreenControls.enabled = false;
         }

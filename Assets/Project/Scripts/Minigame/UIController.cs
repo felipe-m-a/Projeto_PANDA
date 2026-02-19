@@ -81,6 +81,7 @@ namespace Project.Scripts.Minigame
                 plan.Load(GameScene.Menu, true);
 
             plan.Perform();
+            EventBus.RaiseMinigameEnded();
         }
     }
 }

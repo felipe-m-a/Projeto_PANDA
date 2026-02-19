@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53973e1dccbe1bb4cb8d1f9bdcc1646c, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Settings
-  difficultyIndex: 1
+  difficultyIndex: 0
   showOnScreenControls: 1
   colors:
   - {r: 0, g: 0, b: 0, a: 1}

@@ -29,7 +29,6 @@ namespace Project.Scripts.Adventure
 
         private void StartDialogue(Dialogue dialogue)
         {
-            inputReader.EnableDialogueInput();
             _dialogue = dialogue;
             _lineIndex = 0;
 
@@ -38,23 +37,20 @@ namespace Project.Scripts.Adventure
             cinemachine.Priority = 10;
 
             AdvanceDialogue();
-            uiController.ShowDialogue();
         }
 
 
         private void EndDialogue()
         {
+            _dialogue = null;
             cinemachine.Priority = -10;
-            uiController.HideDialogue();
 
             EventBus.RaiseDialogueEnded();
-            inputReader.EnablePlayerInput();
         }
 
         private void AdvanceDialogue()
         {
-            print($"{_dialogue.Lines.Count} > {_lineIndex}");
-            if (_dialogue.Lines.Count > _lineIndex)
+            if (_dialogue != null && _dialogue.Lines.Count > _lineIndex)
                 uiController.UpdateDialogueText(_dialogue.Lines[_lineIndex++]);
             else
                 EndDialogue();
@@ -62,7 +58,6 @@ namespace Project.Scripts.Adventure
 
         private void HandleInput()
         {
-            print("Input");
             if (_dialogue != null)
                 AdvanceDialogue();
         }

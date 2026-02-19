@@ -50,6 +50,7 @@ namespace Project.Scripts.Adventure
         public void DisableAllInput()
         {
             _gameInput.Player.Disable();
+            _gameInput.Dialogue.Disable();
         }
 
         public void EnablePlayerInput()

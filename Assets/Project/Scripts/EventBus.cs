@@ -1,5 +1,6 @@
 ﻿using System;
 using Project.Scripts.Adventure.InteractionSystem;
+using Project.Scripts.SceneManagementSystem;
 
 namespace Project.Scripts
 {
@@ -11,7 +12,7 @@ namespace Project.Scripts
 
         public static event Action MinigameStarted;
         public static event Action MinigameEnded;
-        public static event Action<string> MinigameTriggered;
+        public static event Action<GameScene> MinigameTriggered;
 
         public static void RaiseDialogueStarted()
         {
@@ -38,9 +39,9 @@ namespace Project.Scripts
             MinigameEnded?.Invoke();
         }
 
-        public static void RaiseMinigameTriggered(string minigameName)
+        public static void TriggerMinigame(GameScene minigame)
         {
-            MinigameTriggered?.Invoke(minigameName);
+            MinigameTriggered?.Invoke(minigame);
         }
     }
 }

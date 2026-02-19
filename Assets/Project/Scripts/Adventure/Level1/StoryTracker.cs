@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Project.Scripts.SceneManagementSystem;
+using UnityEngine;
 
 namespace Project.Scripts.Adventure.Level1
 {
@@ -7,7 +9,11 @@ namespace Project.Scripts.Adventure.Level1
         [SerializeField] private UIController uiController;
 
         public bool receivedQuest;
+        public bool deliveredCoins;
         public bool receivedParts;
+        public bool completedFirstMinigame;
+        public bool deliveredParts;
+        public bool completedSecondMinigame;
 
         public int CollectedCoinsCount { get; private set; }
 
@@ -15,6 +21,32 @@ namespace Project.Scripts.Adventure.Level1
         {
             CollectedCoinsCount++;
             uiController.UpdateCoins(CollectedCoinsCount.ToString());
+        }
+
+        public void SubtractCoins(int amount)
+        {
+            CollectedCoinsCount -= amount;
+            uiController.UpdateCoins(CollectedCoinsCount.ToString());
+        }
+
+        private void OnEnable()
+        {
+            EventBus.DialogueEnded += OnDialogueEnded;
+        }
+
+        private void OnDialogueEnded()
+        {
+            if (deliveredCoins && !completedFirstMinigame)
+            {
+                EventBus.TriggerMinigame(GameScene.MinigameMemory);
+                completedFirstMinigame = true;
+            }
+
+            if (deliveredParts && !completedSecondMinigame)
+            {
+                EventBus.TriggerMinigame(GameScene.MinigameFlow);
+                completedSecondMinigame = true;
+            }
         }
     }
 }
