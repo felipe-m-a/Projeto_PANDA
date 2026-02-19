@@ -1,0 +1,31 @@
+:root {
+}
+
+.dialogue {
+    position: absolute;
+    left: 96px;
+    right: 96px;
+    bottom: 54px;
+    height: 324px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    padding: 16px;
+}
+
+.pause-menu {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.pause-menu > Label {
+    font-size: 150px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+}
+
+.pause-menu Button {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}

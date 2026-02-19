@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Dialogue" src="project://database/Assets/Project/UI/Adventure/Dialogue.uxml?fileID=9197481963319205126&amp;guid=717d94891d98c6642a250d1680a728fb&amp;type=3#Dialogue"/>
+    <ui:Template name="Hud" src="project://database/Assets/Project/UI/Adventure/Hud.uxml?fileID=9197481963319205126&amp;guid=2a5e9647e9698cb418af5b3ca4865017&amp;type=3#Hud"/>
+    <ui:Template name="PauseMenu" src="project://database/Assets/Project/UI/Adventure/PauseMenu.uxml?fileID=9197481963319205126&amp;guid=1943449c75299b3479000f2337955922&amp;type=3#PauseMenu"/>
+    <Style src="project://database/Assets/Project/UI/Base.uss?fileID=7433441132597879392&amp;guid=63132c5981a002e4498a783bc4725708&amp;type=3#Base"/>
+    <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:Instance template="Hud" name="HudPanel" style="display: flex;"/>
+        <ui:Instance template="Dialogue" name="DialoguePanel" style="flex-grow: 1; display: none;"/>
+        <ui:Instance template="PauseMenu" name="PauseMenu" style="display: none; flex-grow: 1;"/>
+    </ui:VisualElement>
+</ui:UXML>

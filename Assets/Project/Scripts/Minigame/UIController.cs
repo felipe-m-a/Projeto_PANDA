@@ -64,8 +64,10 @@ namespace Project.Scripts.Minigame
 
         private void OnPauseMenuQuitButtonClicked(ClickEvent evt)
         {
+            Time.timeScale = 1;
             SceneTransitionPlan.Create()
                 .Unload(GameScene.SceneType.Minigame)
+                .Unload(GameScene.SceneType.Adventure)
                 .Load(GameScene.Menu, true)
                 .Perform();
         }
@@ -75,10 +77,13 @@ namespace Project.Scripts.Minigame
             var plan = SceneTransitionPlan.Create()
                 .Unload(GameScene.SceneType.Minigame);
 
-            if (!SceneController.Instance.HasLoaded(GameScene.SceneType.Adventure))
+            if (SceneController.Instance.HasLoaded(GameScene.SceneType.Adventure))
+                plan.Activate(GameScene.SceneType.Adventure);
+            else
                 plan.Load(GameScene.Menu, true);
 
             plan.Perform();
+            EventBus.RaiseMinigameEnded();
         }
     }
 }
