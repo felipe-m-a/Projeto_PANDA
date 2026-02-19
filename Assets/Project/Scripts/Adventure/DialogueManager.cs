@@ -7,62 +7,64 @@ namespace Project.Scripts.Adventure
     public class DialogueManager : MonoBehaviour
     {
         [SerializeField] private CinemachineCamera cinemachine;
-
-        [SerializeField] private Canvas canvas;
-
-        // [SerializeField] private TMP_Text textMesh;
+        [SerializeField] private UIController uiController;
         [SerializeField] private InputReader inputReader;
 
         private Dialogue _dialogue;
         private int _lineIndex;
 
-        private string _scheduledMinigame;
-
         private void OnEnable()
         {
-            canvas.enabled = false;
-            // inputReader.advanceDialogueEvent += AdvanceDialogue;
+            EventBus.DialogueTriggered += StartDialogue;
+            inputReader.AdvanceDialogueEvent += HandleInput;
+            uiController.DialogueClicked += AdvanceDialogue;
         }
 
         private void OnDisable()
         {
-            // inputReader.advanceDialogueEvent += AdvanceDialogue;
+            EventBus.DialogueTriggered -= StartDialogue;
+            inputReader.AdvanceDialogueEvent -= HandleInput;
+            uiController.DialogueClicked -= AdvanceDialogue;
         }
 
-        public void StartDialogue(Dialogue dialogue, string minigameScene = null)
+        private void StartDialogue(Dialogue dialogue)
         {
-            EventBus.RaiseDialogueStarted();
-            // inputReader.EnableDialogueInput();
-            cinemachine.Target.TrackingTarget = dialogue.Target;
-            cinemachine.Priority = 10;
-            canvas.enabled = true;
-
+            inputReader.EnableDialogueInput();
             _dialogue = dialogue;
+            _lineIndex = 0;
 
-            _scheduledMinigame = minigameScene;
+            EventBus.RaiseDialogueStarted();
+            cinemachine.Target.TrackingTarget = _dialogue.Target;
+            cinemachine.Priority = 10;
 
             AdvanceDialogue();
+            uiController.ShowDialogue();
         }
 
 
         private void EndDialogue()
         {
             cinemachine.Priority = -10;
-            canvas.enabled = false;
-            _lineIndex = 0;
-            // inputReader.EnableAdventureInput();
+            uiController.HideDialogue();
 
             EventBus.RaiseDialogueEnded();
-            if (!string.IsNullOrEmpty(_scheduledMinigame)) EventBus.RaiseMinigameTriggered(_scheduledMinigame);
+            inputReader.EnablePlayerInput();
         }
 
-        public void AdvanceDialogue()
+        private void AdvanceDialogue()
         {
+            print($"{_dialogue.Lines.Count} > {_lineIndex}");
             if (_dialogue.Lines.Count > _lineIndex)
-                // textMesh.text = _dialogue.Lines[_lineIndex];
-                _lineIndex++;
+                uiController.UpdateDialogueText(_dialogue.Lines[_lineIndex++]);
             else
                 EndDialogue();
+        }
+
+        private void HandleInput()
+        {
+            print("Input");
+            if (_dialogue != null)
+                AdvanceDialogue();
         }
     }
 }

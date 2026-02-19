@@ -9,6 +9,7 @@ namespace Project.Scripts.Adventure
     {
         [SerializeField] private UIDocument document;
         [SerializeField] private Canvas onScreenControls;
+        [SerializeField] private Settings settings;
 
         private Label _coinsLabel;
         private Label _dialogueLabel;
@@ -39,7 +40,7 @@ namespace Project.Scripts.Adventure
             _pauseMenu.Q<Button>("QuitButton").RegisterCallback<ClickEvent>(OnQuitButtonClicked);
         }
 
-        public event Action DialogueClickedEvent;
+        public event Action DialogueClicked;
 
         public void UpdateCoins(string text)
         {
@@ -53,6 +54,8 @@ namespace Project.Scripts.Adventure
 
         public void ShowDialogue()
         {
+            HideOnscreenControls();
+
             _hudPanel.style.display = DisplayStyle.None;
             _dialoguePanel.style.display = DisplayStyle.Flex;
         }
@@ -61,11 +64,14 @@ namespace Project.Scripts.Adventure
         {
             _dialoguePanel.style.display = DisplayStyle.None;
             _hudPanel.style.display = DisplayStyle.Flex;
+
+            ShowOnscreenControls();
         }
 
         public void ShowOnscreenControls()
         {
-            onScreenControls.enabled = true;
+            if (settings.showOnScreenControls)
+                onScreenControls.enabled = true;
         }
 
         public void HideOnscreenControls()
@@ -83,7 +89,7 @@ namespace Project.Scripts.Adventure
 
         private void OnDialoguePanelClicked(ClickEvent evt)
         {
-            DialogueClickedEvent?.Invoke();
+            DialogueClicked?.Invoke();
         }
 
         private void OnQuitButtonClicked(ClickEvent evt)

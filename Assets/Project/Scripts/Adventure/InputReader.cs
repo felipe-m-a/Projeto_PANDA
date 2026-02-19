@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace Project.Scripts.Adventure
 {
     [CreateAssetMenu(fileName = "InputReader", menuName = "Scriptable Objects/Adventure/InputReader")]
-    public class InputReader : ScriptableObject, GameInput.IPlayerActions
+    public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput.IDialogueActions
     {
         private GameInput _gameInput;
 
@@ -15,6 +15,7 @@ namespace Project.Scripts.Adventure
             {
                 _gameInput = new GameInput();
                 _gameInput.Player.SetCallbacks(this);
+                _gameInput.Dialogue.SetCallbacks(this);
             }
 
             DisableAllInput();
@@ -23,6 +24,12 @@ namespace Project.Scripts.Adventure
         private void OnDisable()
         {
             DisableAllInput();
+        }
+
+        public void OnAdvanceDialogue(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                AdvanceDialogueEvent?.Invoke();
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -36,22 +43,24 @@ namespace Project.Scripts.Adventure
                 InteractEvent?.Invoke();
         }
 
-        // Adventure
         public event Action<Vector2> MoveEvent;
         public event Action InteractEvent;
-
-        public void DisableMoveInput()
-        {
-            _gameInput.Player.Move.Disable();
-        }
-
-        public void EnableAllInput()
-        {
-            _gameInput.Player.Enable();
-        }
+        public event Action AdvanceDialogueEvent;
 
         public void DisableAllInput()
         {
+            _gameInput.Player.Disable();
+        }
+
+        public void EnablePlayerInput()
+        {
+            _gameInput.Player.Enable();
+            _gameInput.Dialogue.Disable();
+        }
+
+        public void EnableDialogueInput()
+        {
+            _gameInput.Dialogue.Enable();
             _gameInput.Player.Disable();
         }
     }

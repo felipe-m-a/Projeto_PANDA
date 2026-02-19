@@ -6,7 +6,6 @@ namespace Project.Scripts.Adventure.Level1
     public class Spaceship : MonoBehaviour, IInteractable
     {
         [SerializeField] private Renderer interactableFocusIcon;
-        [SerializeField] private DialogueManager dialogueManager;
         [SerializeField] private StoryTracker storyTracker;
 
         public bool CanInteract()
@@ -27,17 +26,11 @@ namespace Project.Scripts.Adventure.Level1
         public void Interact()
         {
             var dialogue = new Dialogue(transform);
-
             if (!storyTracker.receivedParts)
-            {
-                dialogue.AddLine("Sua nave está quebrada! Você precisa de peças para consertá-la.");
-                dialogueManager.StartDialogue(dialogue);
-            }
+                dialogue.Add("Sua nave está quebrada! Você precisa de peças para consertá-la.");
             else
-            {
-                dialogue.AddLine("Peças necessárias encontrados.\nIniciando conserto da nave.");
-                dialogueManager.StartDialogue(dialogue);
-            }
+                dialogue.Add("Peças necessárias encontrados.\nIniciando conserto da nave.");
+            EventBus.TriggerDialogue(dialogue);
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Scripts.Adventure.InteractionSystem
 {
-    public struct Dialogue
+    [Serializable]
+    public class Dialogue
     {
-        public readonly Transform Target;
         public readonly List<string> Lines;
+        public readonly Transform Target;
 
         public Dialogue(Transform target)
         {
@@ -14,11 +16,16 @@ namespace Project.Scripts.Adventure.InteractionSystem
             Lines = new List<string>();
         }
 
-        public void AddLine(string text, string name = null)
+        public Dialogue Add(string line)
         {
-            if (name != null)
-                text = name + ":\n" + text;
-            Lines.Add(text);
+            Lines.Add(line);
+            return this;
+        }
+
+        public Dialogue Add(string speaker, string line)
+        {
+            Lines.Add(speaker + ": " + line);
+            return this;
         }
     }
 }

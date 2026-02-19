@@ -1,4 +1,5 @@
 ﻿using System;
+using Project.Scripts.Adventure.InteractionSystem;
 
 namespace Project.Scripts
 {
@@ -6,6 +7,7 @@ namespace Project.Scripts
     {
         public static event Action DialogueStarted;
         public static event Action DialogueEnded;
+        public static event Action<Dialogue> DialogueTriggered;
 
         public static event Action MinigameStarted;
         public static event Action MinigameEnded;
@@ -19,6 +21,11 @@ namespace Project.Scripts
         public static void RaiseDialogueEnded()
         {
             DialogueEnded?.Invoke();
+        }
+
+        public static void TriggerDialogue(Dialogue dialogue)
+        {
+            DialogueTriggered?.Invoke(dialogue);
         }
 
         public static void RaiseMinigameStarted()

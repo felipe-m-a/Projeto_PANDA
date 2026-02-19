@@ -63,11 +63,9 @@ namespace Project.Scripts.Adventure
 
         private void OnInteract()
         {
-            if (!_isTryingToMove && _interactor.focused != null)
-            {
-                _animator.SetTrigger(_interactHash);
-                _interactor.focused.Interact();
-            }
+            if (_isTryingToMove || _interactor.focused == null) return;
+            _animator.SetTrigger(_interactHash);
+            _interactor.focused.Interact();
         }
 
         private void HandleAnimation()

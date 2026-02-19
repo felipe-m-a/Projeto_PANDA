@@ -9,7 +9,7 @@ namespace Project.Scripts.Adventure
 
         private void Start()
         {
-            inputReader.EnableAllInput();
+            inputReader.EnablePlayerInput();
         }
 
         private void OnDisable()
