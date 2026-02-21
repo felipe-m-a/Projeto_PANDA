@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -95,9 +96,7 @@ namespace Project.Scripts.Minigame.Pipes
             {
                 var index = queue.Dequeue();
                 _tiles[index].IsConnected = true;
-
-                print($"{index} - {string.Join(", ", _tiles[index].connections)}");
-
+                
                 foreach (var direction in _tiles[index].connections)
                     if (_tiles.TryGetNeighborIndexInDirection(index, direction, out var neighborIndex)
                         && _tiles[neighborIndex].connections.Contains(direction.Opposite())
@@ -105,7 +104,7 @@ namespace Project.Scripts.Minigame.Pipes
                         queue.Enqueue(neighborIndex);
             }
 
-            if (_tiles.All(t => t.IsConnected)) SolvedEvent?.Invoke();
+            StartCoroutine(CheckIfSolvedRoutine());
         }
 
         private void PickStartTile()
@@ -117,6 +116,15 @@ namespace Project.Scripts.Minigame.Pipes
 
             var rIndex = Random.Range(0, ends.Count);
             _startTileIndex = ends[rIndex];
+        }
+
+        private IEnumerator CheckIfSolvedRoutine()
+        {
+            if (_tiles.Any(t => !t.IsConnected))
+                yield break;
+            board.SetInteractable(false);
+            yield return new WaitForSeconds(1f);
+            SolvedEvent?.Invoke();
         }
     }
 }
