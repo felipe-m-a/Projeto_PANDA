@@ -57,13 +57,19 @@ MonoBehaviour:
     minigameFlowColumns: 5
     minigameMemoryRows: 3
     minigameMemoryColumns: 4
+    minigamePipesRows: 4
+    minigamePipesColumns: 4
   mediumDifficultySettings:
     minigameFlowRows: 5
     minigameFlowColumns: 10
     minigameMemoryRows: 4
     minigameMemoryColumns: 6
+    minigamePipesRows: 4
+    minigamePipesColumns: 8
   hardDifficultySettings:
     minigameFlowRows: 8
     minigameFlowColumns: 16
     minigameMemoryRows: 5
     minigameMemoryColumns: 10
+    minigamePipesRows: 6
+    minigamePipesColumns: 10
