@@ -12,14 +12,17 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Menu.unity
     guid: 4710036c91ac17841851c5dee785012d
   - enabled: 1
+    path: Assets/Project/Scenes/Adventure/Level1.unity
+    guid: d243d5ca305facd43a0fc8a8c343650c
+  - enabled: 1
     path: Assets/Project/Scenes/Minigame/Flow.unity
     guid: d774f87cb10713c4e84edd43150999a0
   - enabled: 1
     path: Assets/Project/Scenes/Minigame/Memory.unity
     guid: 08e3518e9a661dc44838f706248a4484
   - enabled: 1
-    path: Assets/Project/Scenes/Adventure/Level1.unity
-    guid: d243d5ca305facd43a0fc8a8c343650c
+    path: Assets/Project/Scenes/Minigame/Pipes.unity
+    guid: f7e8141c7126ed44cb0c092ddc84ea6a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

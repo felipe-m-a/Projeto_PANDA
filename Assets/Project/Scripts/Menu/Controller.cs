@@ -146,10 +146,10 @@ namespace Project.Scripts.Menu
 
         private void OnMinigamesPagePipesButtonClicked(ClickEvent evt)
         {
-            // SceneTransitionPlan.Create()
-            //     .Unload(GameScene.SceneType.Menu)
-            //     .Load(GameScene.MinigamePipes, true)
-            //     .Perform();
+            SceneTransitionPlan.Create()
+                .Unload(GameScene.SceneType.Menu)
+                .Load(GameScene.MinigamePipes, true)
+                .Perform();
         }
 
         private void OnMinigamesPageSpaceshipButtonClicked(ClickEvent evt)

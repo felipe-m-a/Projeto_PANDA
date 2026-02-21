@@ -76,16 +76,24 @@ namespace Project.Scripts.Minigame
 
         public bool TryGetNeighborIndexInDirection(int index, Direction direction, out int neighborIndex)
         {
-            neighborIndex = direction switch
+            switch (direction)
             {
-                Direction.Up => index - Columns,
-                Direction.Down => neighborIndex = index + Columns,
-                Direction.Left => neighborIndex = index - 1,
-                Direction.Right => neighborIndex = index + 1,
-                _ => neighborIndex = -1
-            };
-
-            return neighborIndex >= 0 && neighborIndex < Count;
+                case Direction.Up:
+                    neighborIndex = index - Columns;
+                    return RowOf(index) > 0;
+                case Direction.Down:
+                    neighborIndex = index + Columns;
+                    return RowOf(index) < Rows - 1;
+                case Direction.Left:
+                    neighborIndex = index - 1;
+                    return ColumnOf(index) > 0;
+                case Direction.Right:
+                    neighborIndex = index + 1;
+                    return ColumnOf(index) < Columns - 1;
+                default:
+                    neighborIndex = -1;
+                    return false;
+            }
         }
 
         public bool TryGetDirectionBetween(int indexA, int indexB, out Direction direction)
