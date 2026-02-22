@@ -96,7 +96,7 @@ namespace Project.Scripts.Minigame.Pipes
             {
                 var index = queue.Dequeue();
                 _tiles[index].IsConnected = true;
-                
+
                 foreach (var direction in _tiles[index].connections)
                     if (_tiles.TryGetNeighborIndexInDirection(index, direction, out var neighborIndex)
                         && _tiles[neighborIndex].connections.Contains(direction.Opposite())
