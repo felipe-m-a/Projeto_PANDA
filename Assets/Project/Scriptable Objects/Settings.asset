@@ -59,6 +59,8 @@ MonoBehaviour:
     minigameMemoryColumns: 4
     minigamePipesRows: 4
     minigamePipesColumns: 4
+    minigamePuzzleSize: 3
+    minigamePuzzleExpectedMoveCount: 5
   mediumDifficultySettings:
     minigameFlowRows: 5
     minigameFlowColumns: 10
@@ -66,6 +68,8 @@ MonoBehaviour:
     minigameMemoryColumns: 6
     minigamePipesRows: 4
     minigamePipesColumns: 8
+    minigamePuzzleSize: 4
+    minigamePuzzleExpectedMoveCount: 8
   hardDifficultySettings:
     minigameFlowRows: 8
     minigameFlowColumns: 16
@@ -73,3 +77,5 @@ MonoBehaviour:
     minigameMemoryColumns: 10
     minigamePipesRows: 6
     minigamePipesColumns: 10
+    minigamePuzzleSize: 4
+    minigamePuzzleExpectedMoveCount: 12

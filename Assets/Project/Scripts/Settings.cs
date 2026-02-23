@@ -37,6 +37,9 @@ namespace Project.Scripts
                     "Minigame Memory: Quantidade de cartas acima do limite");
 
                 Debug.Assert(d.minigamePipesColumns >= d.minigamePipesRows, "Minigame Pipes: Para melhor utilizar o espaço faça colunas >= linhas");
+
+                Debug.Assert(d.minigamePuzzleExpectedMoveCount < d.minigamePuzzleSize * d.minigamePuzzleSize,
+                    "Minigame Puzzle: Talvez seja melhor diminuir a quantidade de movimentos");
             }
         }
 
@@ -51,6 +54,9 @@ namespace Project.Scripts
 
             [Header("Minigame Pipes")] [Min(4)] public int minigamePipesRows;
             [Min(4)] public int minigamePipesColumns;
+
+            [Header("Minigame Puzzle")] [Min(3)] public int minigamePuzzleSize;
+            [Min(4)] public int minigamePuzzleExpectedMoveCount;
         }
     }
 }

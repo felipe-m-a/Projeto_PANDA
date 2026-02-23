@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Project.Scripts.Minigame
 {
@@ -107,6 +108,11 @@ namespace Project.Scripts.Minigame
 
             direction = default;
             return false;
+        }
+
+        public bool AreNeighbors(int indexA, int indexB)
+        {
+            return Mathf.Abs(RowOf(indexA) - RowOf(indexB)) + Mathf.Abs(ColumnOf(indexA) - ColumnOf(indexB)) == 1;
         }
 
         public int RowOf(int index)

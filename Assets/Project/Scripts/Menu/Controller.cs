@@ -138,10 +138,10 @@ namespace Project.Scripts.Menu
 
         private void OnMinigamesPagePuzzleButtonClicked(ClickEvent evt)
         {
-            // SceneTransitionPlan.Create()
-            //     .Unload(GameScene.SceneType.Menu)
-            //     .Load(GameScene.MinigamePuzzle, true)
-            //     .Perform();
+            SceneTransitionPlan.Create()
+                .Unload(GameScene.SceneType.Menu)
+                .Load(GameScene.MinigamePuzzle, true)
+                .Perform();
         }
 
         private void OnMinigamesPagePipesButtonClicked(ClickEvent evt)

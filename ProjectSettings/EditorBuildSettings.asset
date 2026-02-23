@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/Minigame/Pipes.unity
     guid: f7e8141c7126ed44cb0c092ddc84ea6a
+  - enabled: 1
+    path: Assets/Project/Scenes/Minigame/Puzzle.unity
+    guid: 5f1adb5719de4e1428aab95cb9d5af67
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
