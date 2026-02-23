@@ -40,7 +40,7 @@ namespace Project.Scripts.Minigame.Puzzle
 
         private void SpawnTiles(FlatGrid<int> tileIds, int blankId)
         {
-            var cutSprites = SplitIntoSprite(sprites[Random.Range(0, sprites.Length)], tileIds.Rows, tileIds.Columns);
+            var cutSprites = SplitSprite(sprites[Random.Range(0, sprites.Length)], tileIds.Rows, tileIds.Columns);
             for (var i = 0; i < tileIds.Count; i++)
             {
                 var tile = Instantiate(tilePrefab, board.transform);
@@ -95,7 +95,7 @@ namespace Project.Scripts.Minigame.Puzzle
         }
 
 
-        private static List<Sprite> SplitIntoSprite(Sprite fullSprite, int rows, int columns)
+        private static List<Sprite> SplitSprite(Sprite fullSprite, int rows, int columns)
         {
             var width = fullSprite.texture.width / rows;
             var height = fullSprite.texture.height / columns;

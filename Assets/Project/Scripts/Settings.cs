@@ -6,7 +6,7 @@ namespace Project.Scripts
     [CreateAssetMenu(fileName = "Settings", menuName = "Scriptable Objects/Settings")]
     public class Settings : ScriptableObject
     {
-        public int difficultyIndex;
+        [Range(0, 2)] public int difficultyIndex;
         public bool showOnScreenControls;
         public Color[] colors;
         public Sprite[] minigameMemorySymbols;
@@ -57,6 +57,10 @@ namespace Project.Scripts
 
             [Header("Minigame Puzzle")] [Min(3)] public int minigamePuzzleSize;
             [Min(4)] public int minigamePuzzleExpectedMoveCount;
+
+            [Header("Minigame Whack")] [Min(5)] public int minigameWhackPoints;
+            [Min(0.3f)] public float minigameWhackReactionTime;
+            [Min(0f)] public float minigameWhackSpawnDelay;
         }
     }
 }

@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/Minigame/Puzzle.unity
     guid: 5f1adb5719de4e1428aab95cb9d5af67
+  - enabled: 1
+    path: Assets/Project/Scenes/Minigame/Whack.unity
+    guid: b215eb52f75315647a4ffd4d669e6c95
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
