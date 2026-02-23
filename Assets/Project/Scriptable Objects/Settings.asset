@@ -61,6 +61,9 @@ MonoBehaviour:
     minigamePipesColumns: 4
     minigamePuzzleSize: 3
     minigamePuzzleExpectedMoveCount: 5
+    minigameWhackPoints: 5
+    minigameWhackReactionTime: 0.3
+    minigameWhackSpawnDelay: 1
   mediumDifficultySettings:
     minigameFlowRows: 5
     minigameFlowColumns: 10
@@ -70,6 +73,9 @@ MonoBehaviour:
     minigamePipesColumns: 8
     minigamePuzzleSize: 4
     minigamePuzzleExpectedMoveCount: 8
+    minigameWhackPoints: 5
+    minigameWhackReactionTime: 0.3
+    minigameWhackSpawnDelay: 1
   hardDifficultySettings:
     minigameFlowRows: 8
     minigameFlowColumns: 16
@@ -79,3 +85,6 @@ MonoBehaviour:
     minigamePipesColumns: 10
     minigamePuzzleSize: 4
     minigamePuzzleExpectedMoveCount: 12
+    minigameWhackPoints: 5
+    minigameWhackReactionTime: 0.3
+    minigameWhackSpawnDelay: 1

@@ -162,10 +162,10 @@ namespace Project.Scripts.Menu
 
         private void OnMinigamesPageWhackButtonClicked(ClickEvent evt)
         {
-            // SceneTransitionPlan.Create()
-            //     .Unload(GameScene.SceneType.Menu)
-            //     .Load(GameScene.MinigameWhack, true)
-            //     .Perform();
+            SceneTransitionPlan.Create()
+                .Unload(GameScene.SceneType.Menu)
+                .Load(GameScene.MinigameWhack, true)
+                .Perform();
         }
 
         #endregion

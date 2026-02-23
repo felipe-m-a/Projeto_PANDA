@@ -57,6 +57,10 @@ namespace Project.Scripts
 
             [Header("Minigame Puzzle")] [Min(3)] public int minigamePuzzleSize;
             [Min(4)] public int minigamePuzzleExpectedMoveCount;
+
+            [Header("Minigame Whack")] [Min(5)] public int minigameWhackPoints;
+            [Min(0.3f)] public float minigameWhackReactionTime;
+            [Min(0f)]public float minigameWhackSpawnDelay;
         }
     }
 }
