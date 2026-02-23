@@ -69,7 +69,7 @@ MonoBehaviour:
     minigamePipesRows: 4
     minigamePipesColumns: 8
     minigamePuzzleSize: 4
-    minigamePuzzleExpectedMoveCount: 10
+    minigamePuzzleExpectedMoveCount: 8
   hardDifficultySettings:
     minigameFlowRows: 8
     minigameFlowColumns: 16
@@ -78,4 +78,4 @@ MonoBehaviour:
     minigamePipesRows: 6
     minigamePipesColumns: 10
     minigamePuzzleSize: 4
-    minigamePuzzleExpectedMoveCount: 15
+    minigamePuzzleExpectedMoveCount: 12

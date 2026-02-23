@@ -5,12 +5,13 @@ namespace Project.Scripts.Minigame.Puzzle
 {
     public static class Generator
     {
-        public static FlatGrid<int> Generate(int size, int expectedMoveCount)
+        public static (FlatGrid<int> Ids, int BlankIndex) Generate(int size, int expectedMoveCount)
         {
             var grid = new FlatGrid<int>(size, size);
             for (var i = 0; i < grid.Count; i++) grid[i] = i;
 
-            var blankIndex = grid.Count - 1;
+            var blankId = grid.Count - 1;
+            var blankIndex = blankId;
 
             Direction? previousMove = null;
             for (var i = 0; i < expectedMoveCount; i++)
@@ -29,12 +30,9 @@ namespace Project.Scripts.Minigame.Puzzle
 
                 blankIndex = targetIndex;
                 previousMove = pickedMove;
-
-
-                Debug.Log($"[{string.Join(", ", grid)}]");
             }
 
-            return grid;
+            return (grid, blankId);
         }
     }
 }

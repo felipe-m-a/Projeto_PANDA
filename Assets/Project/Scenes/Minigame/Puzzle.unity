@@ -582,9 +582,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1851290239}
-  - component: {fileID: 1851290243}
-  - component: {fileID: 1851290242}
-  - component: {fileID: 1851290241}
   - component: {fileID: 1851290244}
   m_Layer: 0
   m_Name: Minigame
@@ -593,13 +590,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1851290239
-RectTransform:
+--- !u!4 &1851290239
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851290237}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -607,61 +605,6 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &1851290241
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851290237}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!114 &1851290242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851290237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
---- !u!114 &1851290243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851290237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.AspectRatioFitter
-  m_AspectMode: 0
-  m_AspectRatio: 1
 --- !u!114 &1851290244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,9 +619,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Minigame.Puzzle.Minigame
   settings: {fileID: 11400000, guid: e346effbbd5ae994394b2d5501e322a8, type: 2}
   board: {fileID: 2006466896}
-  tilePrefab: {fileID: 8096258264536627211, guid: cf67848aa0d88c248acfa21ce436005b, type: 3}
-  blankPrefab: {fileID: 6077744751307414953, guid: 7e4559de646111540b9d48c41303d5af, type: 3}
-  sprites: []
+  tilePrefab: {fileID: 1228622009525851494, guid: cf67848aa0d88c248acfa21ce436005b, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: c1b674248510fc64481173b1e3872e03, type: 3}
+  - {fileID: 21300000, guid: 1493219cd1a1b464d9a884ce51ab6ec8, type: 3}
+  - {fileID: 21300000, guid: 6446913322d2f4a44b5c26f23d3ebad5, type: 3}
+  - {fileID: 21300000, guid: c689667d2f0ab3a44b2b6e82ddaa1c65, type: 3}
+  - {fileID: 21300000, guid: 9d3f6be81bb51fd4c80768d8045c107e, type: 3}
+  - {fileID: 21300000, guid: 076c9dc3f9d4ac341b69d978eebe0c40, type: 3}
+  - {fileID: 21300000, guid: c267d25ee40d7c04a89ef6014a6c1e76, type: 3}
+  - {fileID: 21300000, guid: a2e9c2b3b2a5b8e43b383e45879e5422, type: 3}
+  - {fileID: 21300000, guid: 162f350686e63e24f9e9ca4622aa667a, type: 3}
+  - {fileID: 21300000, guid: 5ea34355cc46f134cbf6e40c6fb3ac5a, type: 3}
 --- !u!1 &2006466887
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +696,7 @@ MonoBehaviour:
   m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 3
 --- !u!114 &2006466891
 MonoBehaviour:
   m_ObjectHideFlags: 0

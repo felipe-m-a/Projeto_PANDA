@@ -38,5 +38,10 @@ namespace Project.Scripts.Minigame.Puzzle
             _canvasGroup.interactable = interactable;
             _canvasGroup.blocksRaycasts = interactable;
         }
+
+        public void ForceLayoutRebuild()
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_rectTransform);
+        }
     }
 }
