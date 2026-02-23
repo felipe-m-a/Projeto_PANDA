@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53973e1dccbe1bb4cb8d1f9bdcc1646c, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Settings
-  difficultyIndex: 0
+  difficultyIndex: 2
   showOnScreenControls: 1
   colors:
   - {r: 0, g: 0, b: 0, a: 1}
@@ -61,8 +61,8 @@ MonoBehaviour:
     minigamePipesColumns: 4
     minigamePuzzleSize: 3
     minigamePuzzleExpectedMoveCount: 5
-    minigameWhackPoints: 5
-    minigameWhackReactionTime: 0.3
+    minigameWhackPoints: 15
+    minigameWhackReactionTime: 2
     minigameWhackSpawnDelay: 1
   mediumDifficultySettings:
     minigameFlowRows: 5
@@ -73,8 +73,8 @@ MonoBehaviour:
     minigamePipesColumns: 8
     minigamePuzzleSize: 4
     minigamePuzzleExpectedMoveCount: 8
-    minigameWhackPoints: 5
-    minigameWhackReactionTime: 0.3
+    minigameWhackPoints: 30
+    minigameWhackReactionTime: 1.5
     minigameWhackSpawnDelay: 1
   hardDifficultySettings:
     minigameFlowRows: 8
@@ -85,6 +85,6 @@ MonoBehaviour:
     minigamePipesColumns: 10
     minigamePuzzleSize: 4
     minigamePuzzleExpectedMoveCount: 12
-    minigameWhackPoints: 5
-    minigameWhackReactionTime: 0.3
-    minigameWhackSpawnDelay: 1
+    minigameWhackPoints: 50
+    minigameWhackReactionTime: 0.8
+    minigameWhackSpawnDelay: 0.5

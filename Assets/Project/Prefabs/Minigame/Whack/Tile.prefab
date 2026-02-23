@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7046148865885025690}
   - component: {fileID: 8747666523459520439}
   m_Layer: 5
-  m_Name: Enemy
+  m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,14 +133,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12941177, g: 0.14509805, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2620d6692aa4e654883078e9942f5426, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3427c4a020775384ca5e510d814d91e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -181,8 +181,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 425777736344549745}
   - {fileID: 2324821952355834559}
+  - {fileID: 425777736344549745}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -211,14 +211,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.12941177, g: 0.14509805, b: 0.16078432, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3427c4a020775384ca5e510d814d91e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2620d6692aa4e654883078e9942f5426, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -240,6 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720ed80e8e944b50bd64b8fed539e9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Minigame.Whack.Tile
-  slideDuration: 0.1
-  enemyImage: {fileID: 8747666523459520439}
-  isInteractable: 1
+  settings: {fileID: 11400000, guid: e346effbbd5ae994394b2d5501e322a8, type: 2}
+  hitSprite: {fileID: 21300000, guid: d7e5cd029111d694283063584948c99a, type: 3}
+  isInteractable: 0
