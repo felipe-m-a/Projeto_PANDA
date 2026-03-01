@@ -736,6 +736,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Spaceship",
+            "id": "171099ad-efc3-4521-bcc9-0d97125b3f2e",
+            "actions": [
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "c252a257-35ce-42e6-8dd0-3f1fbb8143f2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Pressed",
+                    "type": "Button",
+                    "id": "2326c4b0-9a95-4dbf-874d-e3dc05013bcd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "12210dac-cad0-4ebf-9292-924d970a3fba",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1937467e-857c-471e-937f-eecb2eb9fba9",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -822,6 +822,54 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Spaceship"",
+            ""id"": ""171099ad-efc3-4521-bcc9-0d97125b3f2e"",
+            ""actions"": [
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""c252a257-35ce-42e6-8dd0-3f1fbb8143f2"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""2326c4b0-9a95-4dbf-874d-e3dc05013bcd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""12210dac-cad0-4ebf-9292-924d970a3fba"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1937467e-857c-471e-937f-eecb2eb9fba9"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -906,6 +954,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_AdvanceDialogue = m_Dialogue.FindAction("AdvanceDialogue", throwIfNotFound: true);
+        // Spaceship
+        m_Spaceship = asset.FindActionMap("Spaceship", throwIfNotFound: true);
+        m_Spaceship_Position = m_Spaceship.FindAction("Position", throwIfNotFound: true);
+        m_Spaceship_Pressed = m_Spaceship.FindAction("Pressed", throwIfNotFound: true);
     }
 
     ~@GameInput()
@@ -913,6 +965,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, GameInput.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, GameInput.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Dialogue.enabled, "This will cause a leak and performance issues, GameInput.Dialogue.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Spaceship.enabled, "This will cause a leak and performance issues, GameInput.Spaceship.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1382,6 +1435,113 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="DialogueActions" /> instance referencing this action map.
     /// </summary>
     public DialogueActions @Dialogue => new DialogueActions(this);
+
+    // Spaceship
+    private readonly InputActionMap m_Spaceship;
+    private List<ISpaceshipActions> m_SpaceshipActionsCallbackInterfaces = new List<ISpaceshipActions>();
+    private readonly InputAction m_Spaceship_Position;
+    private readonly InputAction m_Spaceship_Pressed;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Spaceship".
+    /// </summary>
+    public struct SpaceshipActions
+    {
+        private @GameInput m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public SpaceshipActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Spaceship/Position".
+        /// </summary>
+        public InputAction @Position => m_Wrapper.m_Spaceship_Position;
+        /// <summary>
+        /// Provides access to the underlying input action "Spaceship/Pressed".
+        /// </summary>
+        public InputAction @Pressed => m_Wrapper.m_Spaceship_Pressed;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Spaceship; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="SpaceshipActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(SpaceshipActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="SpaceshipActions" />
+        public void AddCallbacks(ISpaceshipActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SpaceshipActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SpaceshipActionsCallbackInterfaces.Add(instance);
+            @Position.started += instance.OnPosition;
+            @Position.performed += instance.OnPosition;
+            @Position.canceled += instance.OnPosition;
+            @Pressed.started += instance.OnPressed;
+            @Pressed.performed += instance.OnPressed;
+            @Pressed.canceled += instance.OnPressed;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="SpaceshipActions" />
+        private void UnregisterCallbacks(ISpaceshipActions instance)
+        {
+            @Position.started -= instance.OnPosition;
+            @Position.performed -= instance.OnPosition;
+            @Position.canceled -= instance.OnPosition;
+            @Pressed.started -= instance.OnPressed;
+            @Pressed.performed -= instance.OnPressed;
+            @Pressed.canceled -= instance.OnPressed;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SpaceshipActions.UnregisterCallbacks(ISpaceshipActions)" />.
+        /// </summary>
+        /// <seealso cref="SpaceshipActions.UnregisterCallbacks(ISpaceshipActions)" />
+        public void RemoveCallbacks(ISpaceshipActions instance)
+        {
+            if (m_Wrapper.m_SpaceshipActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="SpaceshipActions.AddCallbacks(ISpaceshipActions)" />
+        /// <seealso cref="SpaceshipActions.RemoveCallbacks(ISpaceshipActions)" />
+        /// <seealso cref="SpaceshipActions.UnregisterCallbacks(ISpaceshipActions)" />
+        public void SetCallbacks(ISpaceshipActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SpaceshipActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SpaceshipActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="SpaceshipActions" /> instance referencing this action map.
+    /// </summary>
+    public SpaceshipActions @Spaceship => new SpaceshipActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1561,5 +1721,27 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAdvanceDialogue(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Spaceship" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="SpaceshipActions.AddCallbacks(ISpaceshipActions)" />
+    /// <seealso cref="SpaceshipActions.RemoveCallbacks(ISpaceshipActions)" />
+    public interface ISpaceshipActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Position" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pressed" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPressed(InputAction.CallbackContext context);
     }
 }
