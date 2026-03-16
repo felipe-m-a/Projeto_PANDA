@@ -1,27 +1,16 @@
-using System;
 using UnityEngine;
 
 namespace Project.Scripts.Minigame.Spaceship
 {
-    [ExecuteInEditMode]
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer background;
-
-        [SerializeField] private Camera mainCamera;
-
-        private Vector2 _cameraSize;
-        private float _orthographicSize;
-
-
-#if UNITY_EDITOR
-        private void Update()
-#else
+        [SerializeField] private Background background;
+        
         private void Awake()
-#endif
         {
+            Camera mainCamera = Camera.main!;
+            const float targetRatio = 16f / 9f;
             float screenRatio = Screen.width / (float)Screen.height;
-            float targetRatio = 16f / 9f;
 
             if (screenRatio > targetRatio)
             {
@@ -32,10 +21,10 @@ namespace Project.Scripts.Minigame.Spaceship
                 mainCamera.orthographicSize = 9f / 2f * targetRatio / screenRatio;
             }
 
-            _orthographicSize = mainCamera.orthographicSize;
-            float cameraHeight = _orthographicSize * 2f;
-            _cameraSize = new Vector2(mainCamera.aspect * cameraHeight, cameraHeight);
-            background.size = _cameraSize;
+            float height = mainCamera.orthographicSize * 2f;
+            float width = mainCamera.aspect * height;
+            
+            background.transform.localScale = new Vector3(width, height, 1f);
         }
     }
 }
