@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Project.Scripts.Minigame.Spaceship
@@ -9,11 +8,11 @@ namespace Project.Scripts.Minigame.Spaceship
         [SerializeField] private InputActionReference positionInput;
         [SerializeField] private InputActionReference pressInput;
         [SerializeField] private float maxSpeed = 80f;
-        
+
         private Camera _camera;
-        private Rigidbody2D _rigidbody;
 
         private bool _isPressed;
+        private Rigidbody2D _rigidbody;
 
         private void Start()
         {
@@ -24,11 +23,6 @@ namespace Project.Scripts.Minigame.Spaceship
             pressInput.action.canceled += OnPressInput;
         }
 
-        private void OnPressInput(InputAction.CallbackContext context)
-        {
-            _isPressed = context.ReadValue<float>() > 0.5f;
-        }
-        
 
         private void Update()
         {
@@ -36,14 +30,24 @@ namespace Project.Scripts.Minigame.Spaceship
             {
                 var screenPosition = positionInput.action.ReadValue<Vector2>();
                 var worldPosition = _camera.ScreenToWorldPoint(screenPosition);
-                var moveDirection = (worldPosition-transform.position).normalized;
-                
+                var moveDirection = (worldPosition - transform.position).normalized;
+
                 _rigidbody.linearVelocity = moveDirection * maxSpeed;
             }
             else
             {
                 _rigidbody.linearVelocity = Vector3.zero;
             }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Obstacle")) print("Game Over");
+        }
+
+        private void OnPressInput(InputAction.CallbackContext context)
+        {
+            _isPressed = context.ReadValue<float>() > 0.5f;
         }
     }
 }
