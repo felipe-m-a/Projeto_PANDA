@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Project.Scripts.Minigame.Spaceship
@@ -13,11 +14,13 @@ namespace Project.Scripts.Minigame.Spaceship
 
         private bool _isPressed;
         private Rigidbody2D _rigidbody;
+        private Vector3 _startPosition;
 
         private void Start()
         {
             _camera = Camera.main;
             _rigidbody = GetComponent<Rigidbody2D>();
+            _startPosition = _rigidbody.position;
 
             pressInput.action.performed += OnPressInput;
             pressInput.action.canceled += OnPressInput;
@@ -42,7 +45,16 @@ namespace Project.Scripts.Minigame.Spaceship
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Obstacle")) print("Game Over");
+            if (other.CompareTag("Obstacle")) CollidedEvent?.Invoke();
+        }
+
+        public event Action CollidedEvent;
+
+        public void Restart()
+        {
+            _isPressed = false;
+            _rigidbody.linearVelocity = Vector3.zero;
+            _rigidbody.position = _startPosition;
         }
 
         private void OnPressInput(InputAction.CallbackContext context)

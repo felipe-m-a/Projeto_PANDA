@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f060393e27a42ea84d271585486b50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Minigame.Spaceship.Minigame
+  settings: {fileID: 11400000, guid: e346effbbd5ae994394b2d5501e322a8, type: 2}
   obstaclePrefab: {fileID: 6173844909979572024, guid: a4c732f031d3389479b138cae23ccd3e, type: 3}
   spaceship: {fileID: 1921879482}
   spawnLocationMinY: -3.5
@@ -304,6 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 900068628}
+  - component: {fileID: 900068629}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -326,6 +328,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900068629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900068626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfcb270cfd749948b039b48f1af0f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.Scripts.Minigame.Spaceship.Manager
+  uiController: {fileID: 2130510700}
+  minigame: {fileID: 665340349}
 --- !u!1 &980306784
 GameObject:
   m_ObjectHideFlags: 0
