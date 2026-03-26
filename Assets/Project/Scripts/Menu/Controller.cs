@@ -154,10 +154,10 @@ namespace Project.Scripts.Menu
 
         private void OnMinigamesPageSpaceshipButtonClicked(ClickEvent evt)
         {
-            // SceneTransitionPlan.Create()
-            //     .Unload(GameScene.SceneType.Menu)
-            //     .Load(GameScene.MinigameSpaceship, true)
-            //     .Perform();
+            SceneTransitionPlan.Create()
+                .Unload(GameScene.SceneType.Menu)
+                .Load(GameScene.MinigameSpaceship, true)
+                .Perform();
         }
 
         private void OnMinigamesPageWhackButtonClicked(ClickEvent evt)

@@ -27,16 +27,20 @@ namespace Project.Scripts
         {
             foreach (var d in new[] { easyDifficultySettings, mediumDifficultySettings, hardDifficultySettings })
             {
-                Debug.Assert(d.minigameFlowColumns >= d.minigameFlowRows, "Minigame Flow: Não pode ter menos linhas que colunas");
+                Debug.Assert(d.minigameFlowColumns >= d.minigameFlowRows,
+                    "Minigame Flow: Não pode ter menos linhas que colunas");
                 Debug.Assert(d.minigameFlowColumns <= colors.Length, "Minigame Flow: Faltam cores");
 
                 Debug.Assert(d.minigameMemoryColumns >= d.minigameMemoryRows,
                     "Minigame Memory: Para melhor utilizar o espaço faça colunas >= linhas");
-                Debug.Assert(d.minigameMemoryRows * d.minigameMemoryColumns % 2 == 0, "Minigame Memory: A quantidade de cartas tem que ser par");
-                Debug.Assert(d.minigameMemoryRows * d.minigameMemoryColumns / 2 <= colors.Length * minigameMemorySymbols.Length,
+                Debug.Assert(d.minigameMemoryRows * d.minigameMemoryColumns % 2 == 0,
+                    "Minigame Memory: A quantidade de cartas tem que ser par");
+                Debug.Assert(
+                    d.minigameMemoryRows * d.minigameMemoryColumns / 2 <= colors.Length * minigameMemorySymbols.Length,
                     "Minigame Memory: Quantidade de cartas acima do limite");
 
-                Debug.Assert(d.minigamePipesColumns >= d.minigamePipesRows, "Minigame Pipes: Para melhor utilizar o espaço faça colunas >= linhas");
+                Debug.Assert(d.minigamePipesColumns >= d.minigamePipesRows,
+                    "Minigame Pipes: Para melhor utilizar o espaço faça colunas >= linhas");
 
                 Debug.Assert(d.minigamePuzzleExpectedMoveCount < d.minigamePuzzleSize * d.minigamePuzzleSize,
                     "Minigame Puzzle: Talvez seja melhor diminuir a quantidade de movimentos");
@@ -61,6 +65,9 @@ namespace Project.Scripts
             [Header("Minigame Whack")] [Min(5)] public int minigameWhackPoints;
             [Min(0.3f)] public float minigameWhackReactionTime;
             [Min(0f)] public float minigameWhackSpawnDelay;
+
+            [Header("Minigame Spaceship")] [Min(10f)] public float minigameSpaceshipDuration;
+            [Min(0.5f)] public float minigameSpaceshipSpawnDelay;
         }
     }
 }

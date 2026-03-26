@@ -14,6 +14,7 @@ namespace Project.Scripts.Adventure.Level1
         public bool receivedParts;
         public bool deliveredParts;
         public bool fixedSpaceship;
+        public bool tryingToFly;
 
         public int CollectedCoinsCount { get; private set; }
 
@@ -43,7 +44,7 @@ namespace Project.Scripts.Adventure.Level1
         {
             if (deliveredCoins && !receivedParts)
             {
-                EventBus.TriggerMinigame(GameScene.MinigameMemory);
+                EventBus.TriggerMinigame(GameScene.MinigameWhack);
                 receivedParts = true;
             }
             else if (deliveredParts && !fixedSpaceship)
@@ -51,9 +52,12 @@ namespace Project.Scripts.Adventure.Level1
                 EventBus.TriggerMinigame(GameScene.MinigameFlow);
                 fixedSpaceship = true;
             }
-            else if (fixedSpaceship)
+            else if (tryingToFly)
             {
-                CompletedEvent?.Invoke();
+                SceneTransitionPlan.Create()
+                    .Unload(GameScene.SceneType.Adventure)
+                    .Load(GameScene.MinigameSpaceship, true)
+                    .Perform();
             }
         }
     }
