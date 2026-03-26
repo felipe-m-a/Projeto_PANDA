@@ -39,6 +39,7 @@ namespace Project.Scripts.Adventure.Level1
             else
             {
                 dialogue.Add("Nave consertada. Preparando para decolagem.");
+                storyTracker.tryingToFly = true;
             }
 
             EventBus.TriggerDialogue(dialogue);
