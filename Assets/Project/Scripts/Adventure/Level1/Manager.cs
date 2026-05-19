@@ -1,4 +1,6 @@
-﻿using Project.Scripts.SceneManagementSystem;
+﻿using Project.Scripts.Adventure.InteractionSystem;
+using Project.Scripts.SceneManagementSystem;
+using System.Collections;
 using UnityEngine;
 
 namespace Project.Scripts.Adventure.Level1
@@ -8,6 +10,7 @@ namespace Project.Scripts.Adventure.Level1
         [SerializeField] private InputReader inputReader;
         [SerializeField] private UIController uiController;
         [SerializeField] private StoryTracker storyTracker;
+        [SerializeField] private Player player;
 
         private bool _isInMinigame;
 
@@ -68,6 +71,22 @@ namespace Project.Scripts.Adventure.Level1
                 .Unload(GameScene.SceneType.Adventure)
                 .Load(GameScene.Menu, true)
                 .Perform();
+        }
+
+        private void Start()
+        {
+            StartCoroutine(Introduction());
+        }
+
+        private IEnumerator Introduction()
+        {
+            yield return null; // Pula um frame para poder carregar a UI
+
+            var dialogue = new Dialogue(player.transform)
+                .Add("Enquanto viajava pelo espaço, sua nave sofreu uma avaria e realizou um pouso de emergência em um planeta desconhecido.")
+                .Add("Encontre uma maneira de consertá‑la para conseguir voltar para casa.");
+
+            EventBus.TriggerDialogue(dialogue);
         }
     }
 }
