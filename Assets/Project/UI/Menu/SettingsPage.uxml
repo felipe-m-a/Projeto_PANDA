@@ -9,6 +9,10 @@
         <ui:VisualElement class="page-body">
             <ui:DropdownField label="Dificuldade:" choices="Fácil,Médio,Difícil" index="0" name="DifficultyDropdown"/>
             <ui:Toggle label="Exibir controles na tela:" name="ShowOnScreenControlsToggle" style="margin-top: 18px;"/>
+            <ui:VisualElement style="flex-grow: 1; justify-content: flex-end;">
+                <ui:Label text="Jogo desenvolvido pelo LIpE em parceria com o PANDA" style="font-size: 48px; -unity-text-align: upper-center; margin-bottom: 12px;"/>
+                <ui:Image source="project://database/Assets/Project/Art/Menu/Lipe.png?fileID=2800000&amp;guid=6c70500f1a3738b40a818a371daeab07&amp;type=3#Lipe" scale-mode="ScaleToFit" style="height: 128px;"/>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
